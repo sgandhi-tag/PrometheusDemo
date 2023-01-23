@@ -1,0 +1,176 @@
+﻿
+@{
+    ViewBag.Title = "Hockey";
+}
+<h1>Match 1</h1>
+<h2>Hockey</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-6">
+            <label>Team 1: </label>
+            <button class="btn" id="m1team1Score"> Score </button>
+        </div>
+        <div class="col-sm-6">
+            <label>Team 2: </label>
+            <button class="btn" id="m1team2Score"> Score </button>
+        </div>
+    </div>
+    <br /><br />
+    <h3>::Scores::</h3>
+    <div class="col-sm-12">
+        <h4 id="m1team1ScoreTotal">Team1 Score: </h4>
+    </div>
+    <div class="col-sm-12">
+        <h4 id="m1team2ScoreTotal">Team2 Score: </h4>
+    </div>
+</div>
+
+<br />
+<br />
+
+<h1>Match 2</h1>
+<h2>Hockey</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-6">
+            <label>Team 1: </label>
+            <button class="btn" id="m2team1Score"> Score </button>
+        </div>
+        <div class="col-sm-6">
+            <label>Team 2: </label>
+            <button class="btn" id="m2team2Score"> Score </button>
+        </div>
+    </div>
+    <br /><br />
+    <h3>::Scores::</h3>
+    <div class="col-sm-12">
+        <h4 id="m2team1ScoreTotal">Team1 Score: </h4>
+    </div>
+    <div class="col-sm-12">
+        <h4 id="m2team2ScoreTotal">Team2 Score: </h4>
+    </div>
+</div>
+
+<br />
+<br />
+
+<h1>Match 3</h1>
+<h2>Hockey</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-6">
+            <label>Team 1: </label>
+            <button class="btn" id="m3team1Score"> Score </button>
+        </div>
+        <div class="col-sm-6">
+            <label>Team 2: </label>
+            <button class="btn" id="m3team2Score"> Score </button>
+        </div>
+    </div>
+    <br /><br />
+    <h3>::Scores::</h3>
+    <div class="col-sm-12">
+        <h4 id="m3team1ScoreTotal">Team1 Score: </h4>
+    </div>
+    <div class="col-sm-12">
+        <h4 id="m3team2ScoreTotal">Team2 Score: </h4>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    var m1team1Score = 0;
+    var m1team2Score = 0;
+    $("#m1team1Score").on('click', function () {
+        var team = 1;
+        $.ajax({
+            type: "POST",
+            url: "/Home/ScoreIncrement",
+            data: { teamScore: m1team1Score, team: team, match: 1 },
+            success: function (result) {
+                $("#m1team1ScoreTotal").text("Team1 Score: " + result);
+                m1team1Score = result;
+            }
+        });
+
+    });
+
+    $("#m1team2Score").on('click', function () {
+        var team = 2;
+        $.ajax({
+            type: "POST",
+            url: "/Home/ScoreIncrement",
+            data: { teamScore: m1team2Score, team: team, match: 1 },
+            success: function (result) {
+                $("#m1team2ScoreTotal").text("Team2 Score: " + result);
+                m1team2Score = result;
+            }
+        });
+    });
+
+
+    var m2team1Score = 0;
+    var m2team2Score = 0;
+    $("#m2team1Score").on('click', function () {
+        var team = 1;
+        $.ajax({
+            type: "POST",
+            url: "/Home/ScoreIncrement",
+            data: { teamScore: m2team1Score, team: team, match: 2 },
+            success: function (result) {
+                $("#m2team1ScoreTotal").text("Team1 Score: " + result);
+                m2team1Score = result;
+            }
+        });
+
+    });
+
+    $("#m2team2Score").on('click', function () {
+        var team = 2;
+        $.ajax({
+            type: "POST",
+            url: "/Home/ScoreIncrement",
+            data: { teamScore: m2team2Score, team: team, match: 2 },
+            success: function (result) {
+                $("#m2team2ScoreTotal").text("Team2 Score: " + result);
+                m2team2Score = result;
+            }
+        });
+    });
+
+
+    var m3team1Score = 0;
+    var m3team2Score = 0;
+    $("#m3team1Score").on('click', function () {
+        var team = 1;
+        $.ajax({
+            type: "POST",
+            url: "/Home/ScoreIncrement",
+            data: { teamScore: m3team1Score, team: team, match: 3 },
+            success: function (result) {
+                $("#m3team1ScoreTotal").text("Team1 Score: " + result);
+                m3team1Score = result;
+            }
+        });
+
+    });
+
+    $("#m3team2Score").on('click', function () {
+        var team = 2;
+        $.ajax({
+            type: "POST",
+            url: "/Home/ScoreIncrement",
+            data: { teamScore: m3team2Score, team: team, match: 3 },
+            success: function (result) {
+                $("#m3team2ScoreTotal").text("Team2 Score: " + result);
+                m3team2Score = result;
+            }
+        });
+    });
+</script>
+
